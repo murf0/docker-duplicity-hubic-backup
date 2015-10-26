@@ -9,7 +9,6 @@ RUN chmod 755 /build.sh
 RUN /build.sh
 
 COPY duplicity.sh /
-RUN chmod 755 /duplicity.sh
+RUN chmod 755 duplicity.sh 
 
-
-
+ENTRYPOINT ["/duplicity.sh"]

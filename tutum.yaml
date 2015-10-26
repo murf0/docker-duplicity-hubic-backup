@@ -1,16 +1,26 @@
+tutum-cron:
+  image: vizzbuzz/tutum-cron
+  autorestart: always
+  cpu_shares: 128
+  mem_limit: 64m
+  roles:
+    - global
+  environment:
+    TEST_CRON_SCHEDULE: '0 * * * *'
+  links:
+    - backup
+    
 backup:
   image: ''
   deployment_strategy: every_node
   restart: on-failure
   environment'
-    - 'email=
+    - 'email='
     - 'password='
     - 'client_id='
     - 'client_secret='
     - 'redirect_uri='
-    - 'enc_key='
     - 'PASSPHRASE='
     - 'EXCLUDES="--exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run"'
-    - 'PRIVATE_KEY=""'
   volumes:
     - '/:/BACKUP'
