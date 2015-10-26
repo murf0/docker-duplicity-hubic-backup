@@ -1,15 +1,3 @@
-tutum-cron:
-  image: vizzbuzz/tutum-cron
-  autorestart: always
-  cpu_shares: 128
-  mem_limit: 64m
-  roles:
-    - global
-  environment:
-    TEST_CRON_SCHEDULE: '0 * * * *'
-  links:
-    - backup
-    
 backup:
   image: tutum.co/murf/docker-duplicity:latest
   deployment_strategy: every_node

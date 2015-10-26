@@ -1,4 +1,4 @@
-FROM sillelien/base-alpine:latest
+FROM phusion/baseimage:latest
 
 MAINTAINER Mikael@murf.se
 
@@ -8,7 +8,8 @@ COPY build.sh /build.sh
 RUN chmod 755 /build.sh
 RUN /build.sh
 
-COPY duplicity.sh /
-RUN chmod 755 duplicity.sh 
+RUN mkdir /etc/service/duplicity/
+ADD  duplicity.sh /etc/service/duplicity/run
+RUN chmod 755 /etc/service/duplicity/run
 
-ENTRYPOINT ["/duplicity.sh"]
+CMD ["/sbin/my_init"]
