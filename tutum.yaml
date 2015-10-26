@@ -1,0 +1,16 @@
+backup:
+  image: ''
+  deployment_strategy: every_node
+  restart: on-failure
+  environment'
+    - 'email=
+    - 'password='
+    - 'client_id='
+    - 'client_secret='
+    - 'redirect_uri='
+    - 'enc_key='
+    - 'PASSPHRASE='
+    - 'EXCLUDES="--exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run"'
+    - 'PRIVATE_KEY=""'
+  volumes:
+    - '/:/BACKUP'
