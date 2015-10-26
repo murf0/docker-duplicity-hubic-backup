@@ -1,10 +1,5 @@
 #!/usr/bin/env sh
 set -ex
-handler() {
-  exit 0
-}
-trap handler SIGINT
-
 
 if [ ! -e /root/.hubic_credentials ]; then
 	#build .hubic_credentials
