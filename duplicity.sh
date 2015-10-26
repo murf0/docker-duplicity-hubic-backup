@@ -1,9 +1,10 @@
 #!/usr/bin/env sh
 set -ex
-trap processUserSig SIGINT
-processUserSig() {
+handler() {
   exit 0
 }
+trap handler SIGINT
+
 
 if [ ! -e /root/.hubic_credentials ]; then
 	#build .hubic_credentials
