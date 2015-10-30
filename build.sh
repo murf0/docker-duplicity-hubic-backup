@@ -1,7 +1,10 @@
 #!/usr/bin/env sh
-set -ex
+if [ -z ${DBG} ]; then set -e; else set -ex; fi
 export TERM=dumb
 cd /tmp
+
+if [ "x${ORGANISATION_NAME}" = "x" ]; then echo "YOU MUST SET ALL ENVIRONMENT VARIABLES"; exit 254; fi
+
 apt-get update
 apt-get upgrade -y
 

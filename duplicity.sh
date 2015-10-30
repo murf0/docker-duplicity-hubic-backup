@@ -13,8 +13,5 @@ fi
 
 export HOSTNAME=$TUTUM_NODE_HOSTNAME
 duplicity --version
-while true; do
-	duplicity --verbosity notice --full-if-older-than 14D --num-retries 3 --asynchronous-upload --volsize 100 --allow-source-mismatch ${EXCLUDES}  "/BACKUP" "cf+hubic://zBKP_${HOSTNAME}"
-	duplicity remove-older-than 6M --force "cf+hubic://zBKP_${HOSTNAME}"
-	sleep 3600
-done 
+duplicity --verbosity notice --full-if-older-than 14D --num-retries 3 --asynchronous-upload --volsize 100 --allow-source-mismatch ${EXCLUDES}  "/BACKUP" "cf+hubic://zBKP_${HOSTNAME}"
+duplicity remove-older-than 6M --force "cf+hubic://zBKP_${HOSTNAME}"
