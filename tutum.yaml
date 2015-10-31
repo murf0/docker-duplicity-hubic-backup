@@ -6,7 +6,7 @@ tutum-cron:
   roles:
     - global
   environment:
-    TEST_CRON_SCHEDULE: '30 * * * *'
+    - NODE_CRON_SCHEDULE: '30 * * * *'
   links:
     - backup-node
 
@@ -21,6 +21,6 @@ backup-node:
     - 'client_secret='
     - 'redirect_uri='
     - 'PASSPHRASE='
-    - 'EXCLUDES="--exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run"'
+    - 'EXCLUDES="--exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run --exclude-device-files"'
   volumes:
     - '/:/BACKUP:ro'
