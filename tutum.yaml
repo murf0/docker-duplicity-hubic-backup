@@ -1,4 +1,4 @@
-tutum-cron:
+backup-cron:
   image: vizzbuzz/tutum-cron
   autorestart: always
   cpu_shares: 128
@@ -6,21 +6,21 @@ tutum-cron:
   roles:
     - global
   environment:
-    - NODE_CRON_SCHEDULE: '30 * * * *'
+    - 'BACKUP_CRON_SCHEDULE=30 * * * *'
   links:
-    - backup-node
+    - backup
 
-backup-node:
+backup:
   image: tutum.co/murf/docker-duplicity:latest
   deployment_strategy: every_node
   restart: on-failure
-  environment'
+  environment:
     - 'email='
     - 'password='
     - 'client_id='
     - 'client_secret='
     - 'redirect_uri='
     - 'PASSPHRASE='
-    - 'EXCLUDES="--exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run --exclude-device-files"'
+    - 'EXCLUDES=--exclude-device-files --exclude /BACKUP/proc --exclude /BACKUP/sys --exclude /BACKUP/tmp --exclude /BACKUP/run'
   volumes:
     - '/:/BACKUP:ro'
