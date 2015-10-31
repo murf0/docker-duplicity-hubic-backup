@@ -11,7 +11,7 @@ backup-cron:
     - backup
 
 backup:
-  image: tutum.co/murf/docker-duplicity:latest
+  image: tutum.co/murf/docker-duplicity:stable
   deployment_strategy: every_node
   restart: on-failure
   environment:
